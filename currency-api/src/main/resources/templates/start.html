@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/base.css">
+    <link rel="stylesheet" type="text/css" href="/start.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Отправить запрос на получение списка валют</title>
+</head>
+<body class="base">
+<header>
+    <div class="logo">
+        <a th:href="@{/start}">
+            <img src="/logo.jpg">
+        </a>
+    </div>
+    <div class="menu">
+        <a th:href="@{/start}">Главная</a>
+        <a th:href="@{/view/rate(date=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')})}">
+            Таблица валют на сегодня</a>
+        <a th:href="@{/about}">О проекте</a>
+    </div>
+</header>
+<div class="dateForm">
+    <h3>Введите дату, за которую хотите узнать курсы валют в формате yy-mm-dd:</h3>
+    <form th:action="@{/view/rate}">
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Дата" th:name="date">
+            </div>
+            <div class="col">
+                <input type="submit" class="form-control" placeholder="Получить результат">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

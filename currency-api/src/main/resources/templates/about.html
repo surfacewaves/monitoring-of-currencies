@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/base.css">
+    <title>Информация о проекте</title>
+</head>
+<body class="base">
+<header>
+    <div class="logo">
+        <a th:href="@{/start}">
+            <img src="/logo.jpg">
+        </a>
+    </div>
+    <div class="menu">
+        <a th:href="@{/start}">Главная</a>
+        <a th:href="@{/view/rate(date=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')})}">
+            Таблица валют на сегодня</a>
+        <a th:href="@{/about}">О проекте</a>
+    </div>
+</header>
+</body>
+</html>

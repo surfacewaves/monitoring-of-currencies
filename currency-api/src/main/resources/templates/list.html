@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/list.css">
+    <link rel="stylesheet" type="text/css" href="/base.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Список валют</title>
+</head>
+<body class="base">
+<header>
+    <div class="logo">
+        <a th:href="@{/start}">
+            <img src="/logo.jpg">
+        </a>
+    </div>
+    <div class="menu">
+        <a th:href="@{/start}">Главная</a>
+        <a th:href="@{/view/rate(date=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')})}">
+            Таблица валют на сегодня</a>
+        <a th:href="@{/about}">О проекте</a>
+    </div>
+</header>
+<div class="container">
+    <div class="block block-1">
+        <h3>Список валют и их отношение к рублю за <span th:text="${date}"></span>
+            представлены в таблице ниже</h3>
+    </div>
+    <div class="block block-2">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Наименование валюты</th>
+                <th>Курс валюты</th>
+                <th>Дата валюты</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="rate : ${rates}">
+                <td th:text="${rate.getCurrency()}"></td>
+                <td th:text="${rate.getCurs()}"></td>
+                <td th:text="${rate.getDate()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
